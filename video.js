@@ -1,0 +1,1 @@
+// normal video comment handler

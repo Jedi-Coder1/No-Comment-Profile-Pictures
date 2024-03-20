@@ -1,0 +1,22 @@
+{
+   "action": {
+      "default_icon": "assets/icon.png",
+      "default_title": "No YouTube Comment Profile Pictures"
+   },
+   "content_scripts": [
+      {
+         "matches":["https://*.youtube.com/shorts/*"],
+         "js":["short.js"]
+      },
+      {
+         "matches":["https://*.youtube.com/watch"],
+         "js":["video.js"]
+      }
+   ],
+   "author": "Jedi-Coder1",
+   "description": "Replaces all comment profile pictures with a generated default one",
+   "manifest_version": 3,
+   "name": "No YouTube Comment Profile Pictures",
+   "permissions": [],
+   "version": "1.0"
+}
