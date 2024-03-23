@@ -1,4 +1,5 @@
-// normal video comment handler
+// Handle Both Shorts And Normal Videos
+console.log("No Comments PFP's Loaded")
 function random_bg_color() {
     var x = Math.floor(Math.random() * 256)
     var y = Math.floor(Math.random() * 256)
@@ -23,9 +24,18 @@ function createPFP(text) {
     return dataUrl
 }
 
-// observer
-MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-var observer = new MutationObserver(function(mutations, observer) {
-    
-});
-observer.observe(document, {childList: true});
+window.onload = function() {
+    // observer
+    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+    var observer = new MutationObserver(function(mutations, observer) {
+        var contents = document.getElementById("contents")
+        console.log(contents)
+        if (contents) {
+            var comments = contents.getElementsByClassName("style-scope ytd-item-section-renderer")
+            for (let item of comments) {
+                console.log(item);
+            }
+        }
+    });
+    observer.observe(document, {childList: true});
+}
