@@ -6,7 +6,8 @@
    "content_scripts": [
       {
          "matches":["https://*.youtube.com/*"],
-         "js":["NoComments.js"]
+         "js":["NoComments.js"],
+         "run_at": "document_end"
       }
    ],
    "author": "Jedi-Coder1",

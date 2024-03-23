@@ -1,5 +1,7 @@
 // Handle Both Shorts And Normal Videos
 console.log("No Comments PFP's Loaded")
+MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
 function random_bg_color() {
     var x = Math.floor(Math.random() * 256)
     var y = Math.floor(Math.random() * 256)
@@ -24,18 +26,29 @@ function createPFP(text) {
     return dataUrl
 }
 
-window.onload = function() {
+function HandleVideo() {
     // observer
-    MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-    var observer = new MutationObserver(function(mutations, observer) {
-        var contents = document.getElementById("contents")
-        console.log(contents)
-        if (contents) {
-            var comments = contents.getElementsByClassName("style-scope ytd-item-section-renderer")
-            for (let item of comments) {
-                console.log(item);
-            }
-        }
+    var VideoObserver = new MutationObserver(function(mutations, observer) {
+        
     });
-    observer.observe(document, {childList: true});
+    VideoObserver.observe(document.body, {childList: true, attributes: true});
+}
+
+function HandleShorts() {
+    // observer
+    var ShortsObserver = new MutationObserver(function(mutations, observer) {
+        
+    });
+    ShortsObserver.observe(document.body, {childList: true, attributes: true});
+}
+
+window.onload = function() {
+    // check if shorts or normal video
+    if (document.location.href.includes("/watch?v=")) {
+        // Is Normal Video
+        HandleVideo()
+    } else if (document.location.href.includes("/shorts/")) {
+        // Is Short Form Video
+        HandleShorts()
+    }
 }
