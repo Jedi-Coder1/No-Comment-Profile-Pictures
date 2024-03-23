@@ -3,8 +3,7 @@ function random_bg_color() {
     var x = Math.floor(Math.random() * 256)
     var y = Math.floor(Math.random() * 256)
     var z = Math.floor(Math.random() * 256)
-    var bgColor = "rgb(" + x + "," + y + "," + z + ")"
-    return bgColor
+    return "rgb(" + x + "," + y + "," + z + ")"
 }
 function createPFP(text) {
     var canvas = document.createElement("canvas")
@@ -19,5 +18,14 @@ function createPFP(text) {
     ctx.textAlign = "center"
     ctx.fillStyle = "rgb(255,255,255)"
     ctx.fillText(text, 20, 28)
-    return canvas.toDataURL()
+    var dataUrl = canvas.toDataURL()
+    canvas.remove()
+    return dataUrl
 }
+
+// observer
+MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+var observer = new MutationObserver(function(mutations, observer) {
+    
+});
+observer.observe(document, {childList: true});
